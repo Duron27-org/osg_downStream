@@ -1002,6 +1002,10 @@ ELSEIF(CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL 
         # to be listed below. If unhandled, OSG_AGGRESSIVE_WARNING_FLAGS should
         # remain unset.
 
+        IF(ANDROID)
+            SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Dauto_ptr=unique_ptr")
+        ENDIF()
+
         IF (APPLE)
             SET(OSG_CXX_LANGUAGE_STANDARD "C++11" CACHE STRING "set the c++ language standard (C++98 / GNU++98 / C++11) for OSG" )
             MARK_AS_ADVANCED(OSG_CXX_LANGUAGE_STANDARD)
